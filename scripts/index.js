@@ -4,15 +4,20 @@ window.onload = function () {
 
     let theForm = document.querySelector("#theForm");
 
-    //get ALL the radios for coneOrCup using querySelectorAll
-    let coneOrCupRadios = document.querySelectorAll("input[name='coneOrCup']");
+    // //get ALL the radios for coneOrCup using querySelectorAll
+    // let coneOrCupRadios = document.querySelectorAll("input[name='coneOrCup']");
+    let cup = document.querySelector("#cup");
+    let cone = document.querySelector("#cone");
+
+    cup.addEventListener("click", hideShowToppings)
+    cone.addEventListener("click", hideShowToppings)
 
     theForm.addEventListener("submit", calcTotal);
 
     //loop over the radios and add the event lisenter
-    coneOrCupRadios.forEach(function(radio){
-        radio.addEventListener("click", hideShowToppings);
-    })
+    // coneOrCupRadios.forEach(function(radio){
+    //     radio.addEventListener("click", hideShowToppings);
+    // })
 
 }
 
