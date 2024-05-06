@@ -3,12 +3,16 @@
 window.onload = function () {
 
     let theForm = document.querySelector("#theForm");
-    let cupChecked = document.querySelector("#cupChecked");
-    let coneChecked = document.querySelector("#coneChecked");
 
-    theForm.addEventListener("submit", calcTotal)
-    cupChecked.addEventListener("click", hideShowToppings);
-    coneChecked.addEventListener("click", hideShowToppings);
+    //get ALL the radios for coneOrCup using querySelectorAll
+    let coneOrCupRadios = document.querySelectorAll("#coneOrCup");
+
+    theForm.addEventListener("submit", calcTotal);
+
+    //loop over the radios and add the event lisenter
+    coneOrCupRadios.forEach(function(radio){
+        radio.addEventListener("click", hideShowToppings);
+    })
 
 }
 
@@ -47,8 +51,8 @@ function calcTotal(event) {
 
     let message = `
             <div>Base Price: $${iceCreamTotal.toFixed(2)}</div>
-            <div>Base Price: $${taxAmount.toFixed(2)}</div>
-            <div>Base Price: $${(iceCreamTotal + taxAmount).toFixed(2)}</div>
+            <div>Tax: $${taxAmount.toFixed(2)}</div>
+            <div>Total Due: $${(iceCreamTotal + taxAmount).toFixed(2)}</div>
         `
 
     document.querySelector("#results").innerHTML = message;
